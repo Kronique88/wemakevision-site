@@ -8,6 +8,7 @@ One-page company site for wemakevision.com, hosted on GitHub Pages.
 | --- | --- |
 | index.html | The whole site: markup, styles and a few lines of script. No build step. |
 | CNAME | Custom domain for GitHub Pages (wemakevision.com). |
+| assets/ | Photos, map crops and YouTube channel images (WebP). |
 | .nojekyll | Tells GitHub Pages to serve files as-is. |
 | robots.txt, sitemap.xml | Search engine hints. |
 
@@ -15,7 +16,7 @@ One-page company site for wemakevision.com, hosted on GitHub Pages.
 
 Edit index.html and push to main. GitHub Pages redeploys automatically.
 
-Sections, in order: Hero, Services, Products, Process, About (CEO), Contact.
+Sections, in order: Hero, Services, Products, Work (area analysis maps), Process, YouTube (channels), About (CEO), Contact.
 
 ## Custom domain DNS
 

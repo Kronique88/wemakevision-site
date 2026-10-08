@@ -25,6 +25,7 @@
   "url": "https://wemakevision.com/",
   "email": "james.hur@wemakevision.com",
   "description": "Data-driven SNS and online marketing, ad recommendation systems, AI promotional video production and usage-based system diagnosis.",
+  "sameAs": ["https://www.youtube.com/@hotspot-of-korea", "https://www.youtube.com/channel/UCFhpeG2EUv7F2uXmzctlP1Q"],
   "founder": { "@type": "Person", "name": "James Hur", "jobTitle": "CEO" }
 }
 </script>
@@ -128,7 +129,7 @@ h3{font-size:22px;font-weight:700;line-height:1.25}
 .about .copy li{margin:8px 0}
 .ceo{padding:32px}
 .ceo-head{display:flex;align-items:center;gap:18px;margin-bottom:20px}
-.avatar{width:64px;height:64px;border-radius:16px;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:22px;display:grid;place-items:center;flex:none}
+.avatar{width:72px;height:72px;border-radius:16px;object-fit:cover;flex:none;border:1px solid var(--border);background:var(--surface2)}
 .ceo-head .name{font-size:22px;font-weight:700}
 .ceo-head .role{color:var(--muted);font-size:14px}
 .ceo p{color:var(--muted);font-size:15px;margin:0 0 16px}
@@ -142,6 +143,37 @@ h3{font-size:22px;font-weight:700;line-height:1.25}
 .contact .card p{color:var(--muted);margin:0 0 22px;font-size:15px}
 .email-big{display:inline-block;margin-top:40px;font-size:clamp(20px,3.4vw,32px);font-weight:700;color:var(--text);border-bottom:2px solid var(--accent)}
 
+/* hero visual: photo + floating panel */
+.hero-visual{position:relative;padding-bottom:28px}
+.hero-visual .shot{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:20px;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.45);display:block}
+.hero-visual .panel{position:absolute;left:-28px;bottom:0;width:min(380px,88%);padding:16px 18px}
+.hero-visual .bars{height:84px}
+.hero-visual .recs li{padding:10px 12px;font-size:13px}
+
+/* work gallery */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.gallery figure{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.gallery img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.gallery figcaption{padding:16px 20px 18px;font-size:14px;color:var(--muted);line-height:1.5}
+.gallery figcaption b{display:block;color:var(--text);font-size:15px;margin-bottom:4px}
+.gallery .wide{grid-column:1/-1}
+.gallery .wide img{aspect-ratio:16/5}
+
+/* youtube */
+.yt .card{padding:0;overflow:hidden;display:flex;flex-direction:column;color:inherit}
+.yt .banner{width:100%;aspect-ratio:1280/212;object-fit:cover;display:block}
+.yt .ch{display:flex;align-items:center;gap:14px;padding:20px 24px 0}
+.yt .ch img{width:56px;height:56px;border-radius:50%;flex:none;border:1px solid var(--border)}
+.yt .ch .name{font-weight:700;font-size:18px}
+.yt .ch .name span{font-weight:500;font-size:14px;margin-left:6px}
+.yt .ch .handle{color:var(--muted);font-size:13px}
+.yt .desc{padding:14px 24px 0;color:var(--muted);font-size:15px;margin:0}
+.yt .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:18px 24px 0}
+.yt .thumbs img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--border);display:block}
+.yt .foot{display:flex;justify-content:space-between;align-items:center;padding:18px 24px 22px;gap:12px;flex-wrap:wrap;margin-top:auto}
+.yt .foot span{color:var(--muted);font-size:13px}
+.yt .foot .link{color:var(--accent)}
+
 /* footer */
 footer{border-top:1px solid var(--border);padding:36px 0;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
@@ -152,14 +184,20 @@ footer a:hover{color:var(--text)}
   .grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}
   .grid-5{grid-template-columns:repeat(2,1fr)}
   .hero .wrap,.about .wrap{grid-template-columns:1fr}
+  .hero-visual{padding-bottom:0}
+  .hero-visual .panel{position:static;width:auto;margin-top:16px}
+  .gallery{grid-template-columns:1fr}
+  .gallery .wide img{aspect-ratio:16/7}
   .hero{padding:72px 0 56px}
+}
+@media (max-width:760px){
+  .nav-links{display:none;position:absolute;left:0;right:0;top:64px;background:var(--bg);border-bottom:1px solid var(--border);flex-direction:column;align-items:flex-start;padding:16px 24px 20px;gap:16px}
+  .nav-links.open{display:flex}
+  .menu-btn{display:inline-flex}
 }
 @media (max-width:640px){
   section{padding:72px 0}
   .grid-2,.grid-3,.grid-4,.grid-5{grid-template-columns:1fr}
-  .nav-links{display:none;position:absolute;left:0;right:0;top:64px;background:var(--bg);border-bottom:1px solid var(--border);flex-direction:column;align-items:flex-start;padding:16px 24px 20px;gap:16px}
-  .nav-links.open{display:flex}
-  .menu-btn{display:inline-flex}
   .facts div{grid-template-columns:1fr}
   .panel{padding:18px}
 }
@@ -179,7 +217,8 @@ footer a:hover{color:var(--text)}
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
       <li><a href="#products">Products</a></li>
-      <li><a href="#process">Process</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#youtube">YouTube</a></li>
       <li><a href="#about">About</a></li>
       <li><a class="cta" href="#contact">Contact</a></li>
     </ul>
@@ -200,7 +239,9 @@ footer a:hover{color:var(--text)}
         <a class="btn btn-ghost" href="#contact">Talk to us</a>
       </div>
     </div>
-    <div class="panel" aria-hidden="true">
+    <div class="hero-visual">
+      <img class="shot" src="assets/hero-map.webp" alt="Marketing area analysis map of Dobong-gu, Seoul, with candidate locations marked" width="954" height="596" fetchpriority="high">
+      <div class="panel" aria-hidden="true">
       <div class="panel-head"><span><span class="dot"></span><b>Recommendation engine</b></span><span>this week</span></div>
       <div class="bars">
         <span style="height:38%"></span><span style="height:52%"></span><span style="height:44%"></span>
@@ -211,6 +252,7 @@ footer a:hover{color:var(--text)}
         <li><div>Shift 20% of budget to evening placements<small>Ad recommendation</small></div><span class="score">88</span></li>
         <li><div>Unused feature found: export flow<small>System diagnosis</small></div><span class="score">71</span></li>
       </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -321,6 +363,37 @@ footer a:hover{color:var(--text)}
   </div>
 </section>
 
+<!-- WORK -->
+<section id="work" class="work">
+  <div class="wrap">
+    <p class="eyebrow">In the field</p>
+    <h2>Local market and area analysis</h2>
+    <p class="lead">Before a campaign goes live we map the district: where the demand is, what prices look like, and where an ad or a store would actually be seen. The examples below are from northern Seoul.</p>
+    <div class="gallery">
+      <figure>
+        <img src="assets/map-dobong-markers.webp" alt="Map of Dobong-gu, Seoul, with candidate locations and competitors marked" width="800" height="500" loading="lazy">
+        <figcaption><b>Marketing area analysis, Dobong-gu</b>Candidate locations and competing points scored against foot traffic, transit access and nearby housing.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/map-nowon-markers.webp" alt="Map of Nowon-gu, Seoul, with price and demand points marked by block" width="800" height="500" loading="lazy">
+        <figcaption><b>Price analysis map, Nowon-gu</b>Price levels and demand hot spots by block, used to set ad budget neighbourhood by neighbourhood.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/map-dobong-dong.webp" alt="Map of Dobong-gu with administrative dong boundaries overlaid" width="800" height="500" loading="lazy">
+        <figcaption><b>Administrative-district overlay</b>Dong-level boundaries matched to ad-platform targeting, so spend follows real boundaries instead of a radius.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/map-dobong-report.webp" alt="Detailed map of central Dobong-gu with transit lines, schools and housing blocks" width="880" height="550" loading="lazy">
+        <figcaption><b>Campaign briefing map</b>Transit lines, schools and housing blocks compiled into one page for the campaign kickoff.</figcaption>
+      </figure>
+      <figure class="wide">
+        <img src="assets/map-nowon-report.webp" alt="Nowon-gu district report header with Seoul-wide position and neighbourhood breakdown maps" width="1200" height="368" loading="lazy">
+        <figcaption><b>District report, Nowon-gu</b>Seoul-wide position, district boundaries and the neighbourhood breakdown, assembled for a local campaign.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESS -->
 <section id="process">
   <div class="wrap">
@@ -333,6 +406,45 @@ footer a:hover{color:var(--text)}
       <div class="step"><div class="num">03</div><h3>Recommend</h3><p>Get ranked recommendations: ads, video topics, system fixes.</p></div>
       <div class="step"><div class="num">04</div><h3>Create</h3><p>AI-generated videos and campaigns, reviewed by people before launch.</p></div>
       <div class="step"><div class="num">05</div><h3>Measure</h3><p>Track results and feed them back into the next cycle.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUTUBE -->
+<section id="youtube" class="yt">
+  <div class="wrap">
+    <p class="eyebrow">YouTube</p>
+    <h2>Channels we run</h2>
+    <p class="lead">Our own channels are the test bed for everything above: topics are picked by data, shorts are produced with AI, and the results feed the next recommendation. New shorts go out several times a day.</p>
+    <div class="grid grid-2">
+      <a class="card" href="https://www.youtube.com/@hotspot-of-korea" target="_blank" rel="noopener">
+        <img class="banner" src="assets/yt/hotspot-banner.webp" alt="" width="1280" height="212" loading="lazy">
+        <div class="ch">
+          <img src="assets/yt/hotspot-avatar.webp" alt="" width="56" height="56" loading="lazy">
+          <div><div class="name">핫스팟<span class="muted">Hotspot</span></div><div class="handle">@hotspot-of-korea</div></div>
+        </div>
+        <p class="desc">The hottest stories in Korean politics, as shorts. Korean-language channel.</p>
+        <div class="thumbs">
+          <img src="assets/yt/hotspot-1.webp" alt="Recent short from the Hotspot channel" width="360" height="640" loading="lazy">
+          <img src="assets/yt/hotspot-2.webp" alt="Recent short from the Hotspot channel" width="360" height="640" loading="lazy">
+          <img src="assets/yt/hotspot-3.webp" alt="Recent short from the Hotspot channel" width="360" height="640" loading="lazy">
+        </div>
+        <div class="foot"><span>Shorts &middot; Korean politics and current affairs</span><span class="link">Watch on YouTube &rarr;</span></div>
+      </a>
+      <a class="card" href="https://www.youtube.com/channel/UCFhpeG2EUv7F2uXmzctlP1Q" target="_blank" rel="noopener">
+        <img class="banner" src="assets/yt/bosupicker-banner.webp" alt="" width="1280" height="212" loading="lazy">
+        <div class="ch">
+          <img src="assets/yt/bosupicker-avatar.webp" alt="" width="56" height="56" loading="lazy">
+          <div><div class="name">보수피커<span class="muted">Bosu Picker</span></div><div class="handle">@보수피커</div></div>
+        </div>
+        <p class="desc">News picks and commentary on Korean politics from the conservative side, as shorts. Korean-language channel.</p>
+        <div class="thumbs">
+          <img src="assets/yt/bosupicker-1.webp" alt="Recent short from the Bosu Picker channel" width="360" height="640" loading="lazy">
+          <img src="assets/yt/bosupicker-2.webp" alt="Recent short from the Bosu Picker channel" width="360" height="640" loading="lazy">
+          <img src="assets/yt/bosupicker-3.webp" alt="Recent short from the Bosu Picker channel" width="360" height="640" loading="lazy">
+        </div>
+        <div class="foot"><span>Shorts &middot; Korean politics and current affairs</span><span class="link">Watch on YouTube &rarr;</span></div>
+      </a>
     </div>
   </div>
 </section>
@@ -353,7 +465,7 @@ footer a:hover{color:var(--text)}
     </div>
     <div class="card ceo">
       <div class="ceo-head">
-        <div class="avatar" aria-hidden="true">JH</div>
+        <img class="avatar" src="assets/ceo-james-hur.webp" alt="James Hur, CEO of WeMakeVision" width="72" height="72">
         <div><div class="name">James Hur</div><div class="role">CEO &amp; Founder</div></div>
       </div>
       <p>James Hur has spent more than ten years in consumer electronics R&amp;D as an engineer and project manager, turning sensor data and real-world usage data into product decisions. WeMakeVision applies the same discipline to marketing: measure what people actually do, then decide.</p>

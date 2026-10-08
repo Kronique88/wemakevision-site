@@ -96,9 +96,17 @@ h3{font-size:22px;font-weight:700;line-height:1.25}
 .recs .score{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
 .recs small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
 
+/* stats */
+.stats{margin-top:64px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 28px}
+.stat .num{font-size:clamp(34px,4vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--text);font-variant-numeric:tabular-nums}
+.stat .num .plus{color:var(--accent)}
+.stat .label{color:var(--muted);font-size:14px;margin-top:10px}
+
 /* strip */
-.strip{padding:0 0 32px;border-top:none}
-.strip .card{padding:22px 24px}
+.strip{padding:40px 0 8px;border-top:none}
+.strip .card{padding:18px 0 0;background:none;border:0;border-top:2px solid var(--border);border-radius:0}
+.strip .card:hover{transform:none}
 .strip h3{font-size:17px;margin-bottom:6px}
 .strip p{margin:0;color:var(--muted);font-size:14px}
 
@@ -253,6 +261,14 @@ footer a:hover{color:var(--text)}
         <li><div>Unused feature found: export flow<small>System diagnosis</small></div><span class="score">71</span></li>
       </ul>
       </div>
+    </div>
+  </div>
+  <div class="wrap stats">
+    <div class="grid grid-4">
+      <div class="stat"><div class="num">200<span class="plus">+</span></div><div class="label">local market and area analyses</div></div>
+      <div class="stat"><div class="num">12<span class="plus">+</span></div><div class="label">years of experience in the field</div></div>
+      <div class="stat"><div class="num">30</div><div class="label">patent filings, US and Korea</div></div>
+      <div class="stat"><div class="num">40<span class="plus">+</span></div><div class="label">shorts published on our channels</div></div>
     </div>
   </div>
 </section>

@@ -31,6 +31,6 @@ At your DNS provider for wemakevision.com:
 | AAAA | @ | 2606:50c0:8001::153 |
 | AAAA | @ | 2606:50c0:8002::153 |
 | AAAA | @ | 2606:50c0:8003::153 |
-| CNAME | www | GITHUB_USERNAME.github.io |
+| CNAME | www | Kronique88.github.io |
 
 Then in the repository: Settings > Pages > Custom domain = wemakevision.com, and tick "Enforce HTTPS" once the DNS check passes.

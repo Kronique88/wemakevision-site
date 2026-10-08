@@ -16,7 +16,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FFB020'/%3E%3Cpath d='M12 22l9 22 11-16 11 16 9-22' fill='none' stroke='%230e0e10' stroke-width='6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -37,7 +37,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Noto Sans KR",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img,svg{display:block}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
@@ -63,6 +63,12 @@ h3{font-size:22px;font-weight:700;line-height:1.25}
 .grid-4{grid-template-columns:repeat(4,1fr)}
 .grid-5{grid-template-columns:repeat(5,1fr)}
 
+/* korean typography */
+html[lang=ko] body{word-break:keep-all;overflow-wrap:break-word}
+html[lang=ko] h1,html[lang=ko] h2,html[lang=ko] h3{letter-spacing:-.01em}
+html[lang=ko] .hero h1{font-size:clamp(34px,5.2vw,58px);line-height:1.15}
+html[lang=ko] .eyebrow{letter-spacing:.08em}
+
 /* nav */
 .nav{position:sticky;top:0;z-index:50;background:rgba(14,14,16,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;position:relative}
@@ -73,6 +79,9 @@ h3{font-size:22px;font-weight:700;line-height:1.25}
 .nav-links a:hover{color:var(--text)}
 .nav-links .cta{color:var(--accent-ink);background:var(--accent);padding:8px 14px;border-radius:9px;font-weight:600}
 .nav-links .cta:hover{background:#ffc04d;color:var(--accent-ink)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang{background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:7px 10px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;line-height:1.2}
+.lang:hover{color:var(--text);border-color:#44444d}
 .menu-btn{display:none;background:none;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:8px 10px;cursor:pointer;font:inherit;font-size:14px}
 
 /* hero */
@@ -98,8 +107,8 @@ h3{font-size:22px;font-weight:700;line-height:1.25}
 
 /* stats */
 .stats{margin-top:64px}
-.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 28px}
-.stat .num{font-size:clamp(34px,4vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--text);font-variant-numeric:tabular-nums}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px}
+.stat .num{font-size:clamp(32px,3.4vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--text);font-variant-numeric:tabular-nums}
 .stat .num .plus{color:var(--accent)}
 .stat .label{color:var(--muted);font-size:14px;margin-top:10px}
 
@@ -191,6 +200,7 @@ footer a:hover{color:var(--text)}
 @media (max-width:960px){
   .grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}
   .grid-5{grid-template-columns:repeat(2,1fr)}
+  .stats .grid-5{grid-template-columns:repeat(3,1fr)}
   .hero .wrap,.about .wrap{grid-template-columns:1fr}
   .hero-visual{padding-bottom:0}
   .hero-visual .panel{position:static;width:auto;margin-top:16px}
@@ -206,6 +216,7 @@ footer a:hover{color:var(--text)}
 @media (max-width:640px){
   section{padding:72px 0}
   .grid-2,.grid-3,.grid-4,.grid-5{grid-template-columns:1fr}
+  .stats .grid-5{grid-template-columns:repeat(2,1fr)}
   .facts div{grid-template-columns:1fr}
   .panel{padding:18px}
 }
@@ -221,15 +232,18 @@ footer a:hover{color:var(--text)}
       </span>
       WEMAKEVISION
     </a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">Menu</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#youtube">YouTube</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a class="cta" href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#youtube">YouTube</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a class="cta" href="#contact">Contact</a></li>
+      </ul>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language" lang="ko">한국어</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    </div>
   </div>
 </header>
 
@@ -264,11 +278,12 @@ footer a:hover{color:var(--text)}
     </div>
   </div>
   <div class="wrap stats">
-    <div class="grid grid-4">
+    <div class="grid grid-5">
       <div class="stat"><div class="num">200<span class="plus">+</span></div><div class="label">local market and area analyses</div></div>
       <div class="stat"><div class="num">12<span class="plus">+</span></div><div class="label">years of experience in the field</div></div>
       <div class="stat"><div class="num">30</div><div class="label">patent filings, US and Korea</div></div>
-      <div class="stat"><div class="num">40<span class="plus">+</span></div><div class="label">shorts published on our channels</div></div>
+      <div class="stat"><div class="num">500<span class="plus">+</span></div><div class="label">contents created</div></div>
+      <div class="stat"><div class="num">1M<span class="plus">+</span></div><div class="label">revenue generated</div></div>
     </div>
   </div>
 </section>
@@ -523,7 +538,7 @@ footer a:hover{color:var(--text)}
 
 <footer>
   <div class="wrap">
-    <div>&copy; <span id="year">2026</span> WeMakeVision. We make your data visible.</div>
+    <div id="copy">&copy; 2023&ndash;<span id="year">2026</span> WeMakeVision. We make your data visible.</div>
     <div class="foot-links">
       <a href="https://wemakevision.com/">wemakevision.com</a>
       <a href="mailto:james.hur@wemakevision.com">james.hur@wemakevision.com</a>
@@ -540,6 +555,119 @@ footer a:hover{color:var(--text)}
   });
   links.addEventListener('click',function(e){ if(e.target.tagName==='A'){links.classList.remove('open');btn.setAttribute('aria-expanded','false');} });
   document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+<script>
+(function(){
+  // Korean translations keyed by the English text as rendered (whitespace-collapsed).
+  var KO = {
+    "Services":"서비스","Products":"제품","Work":"사례","YouTube":"유튜브","About":"회사 소개","Contact":"문의","Menu":"메뉴",
+    "We make your data visible":"데이터를 보이게 만듭니다",
+    "WeMakeVision runs SNS and online marketing on data. We analyse how people actually use your channels and systems, recommend what to do next, and produce the ads and videos to do it, with AI.":"WeMakeVision은 데이터로 SNS와 온라인 마케팅을 운영합니다. 고객의 채널과 시스템이 실제로 어떻게 쓰이는지 분석하고, 다음에 무엇을 해야 할지 추천하며, 그에 맞는 광고와 영상을 AI로 제작합니다.",
+    "See products":"제품 보기","Talk to us":"문의하기",
+    "Recommendation engine":"추천 엔진","this week":"이번 주",
+    "Topic recommendation":"주제 추천","Ad recommendation":"광고 추천","System diagnosis":"시스템 진단",
+    "local market and area analyses":"지역 상권·시장 분석 건수","years of experience in the field":"해당 분야 경험 연수","patent filings, US and Korea":"특허 출원, 미국·한국","contents created":"제작한 콘텐츠","revenue generated":"누적 매출",
+    "Data first":"데이터 우선","Every recommendation starts from your own data, not from guesses.":"모든 추천은 추측이 아니라 고객의 데이터에서 시작합니다.",
+    "AI-made content":"AI 제작 콘텐츠","Topics, scripts and videos generated and refined with AI, reviewed by people.":"주제, 대본, 영상을 AI로 생성하고 다듬은 뒤 사람이 검수합니다.",
+    "Usage-based":"사용량 기반","Systems judged by how they are really used, not how they were designed.":"설계 의도가 아니라 실제 사용 방식으로 시스템을 평가합니다.",
+    "End to end":"처음부터 끝까지","From analysis to recommendation to production to measurement.":"분석에서 추천, 제작, 측정까지 한 번에.",
+    "What we do":"하는 일","Six things, all connected by one idea: decisions should come from data, and content should follow the decisions.":"여섯 가지 일을 하나의 원칙으로 연결합니다. 결정은 데이터에서 나오고, 콘텐츠는 그 결정을 따릅니다.",
+    "Planning, posting and growing your social channels, with every decision backed by what the numbers say.":"소셜 채널의 기획, 게시, 성장을 맡습니다. 모든 결정은 숫자가 말하는 근거 위에서 내립니다.",
+    "Online Marketing":"온라인 마케팅","Campaigns across search, social and display, planned, run and optimised on performance data.":"검색, 소셜, 디스플레이 캠페인을 성과 데이터로 기획하고 운영하고 최적화합니다.",
+    "Guide":"가이드","Strategy and roadmaps. We show you where your marketing and systems should go next, and how to get there.":"전략과 로드맵. 마케팅과 시스템이 다음에 어디로 가야 하는지, 어떻게 갈지 보여 드립니다.",
+    "Assist":"어시스트","Hands-on support for your team: setup, day-to-day operation and troubleshooting of marketing and data tools.":"마케팅·데이터 도구의 세팅, 일상 운영, 문제 해결까지 팀 곁에서 직접 돕습니다.",
+    "Analysis":"분석","Channel, campaign, user-behaviour and system analysis, turned into decisions you can act on this week.":"채널, 캠페인, 사용자 행동, 시스템을 분석해 이번 주에 바로 실행할 수 있는 결정으로 바꿉니다.",
+    "Recommendation Systems":"추천 시스템","We build and operate data-driven recommendation systems that keep learning from your data after launch.":"출시 후에도 데이터로 계속 학습하는 데이터 기반 추천 시스템을 구축하고 운영합니다.",
+    "What you can use today":"지금 바로 쓸 수 있는 제품","Four products, one pipeline: analyse what is happening, recommend what to do, and produce it with AI.":"네 가지 제품, 하나의 파이프라인. 무슨 일이 일어나는지 분석하고, 무엇을 할지 추천하고, AI로 만들어 냅니다.",
+    "Ads":"광고","Video topics":"영상 주제","AI video":"AI 영상","Diagnosis":"진단","Ask about this →":"문의하기 →",
+    "Ad Recommendation Engine":"광고 추천 엔진","A data-driven system that reads your campaign and channel data and recommends where, when and what to advertise next.":"캠페인과 채널 데이터를 읽고 다음에 어디에, 언제, 무엇을 광고할지 추천하는 데이터 기반 시스템입니다.",
+    "Audience, placement and timing recommendations from your own performance data":"자체 성과 데이터에 기반한 타깃, 지면, 시간대 추천","Budget and creative suggestions ranked by expected impact":"기대 효과 순으로 정렬한 예산과 소재 제안","Runs continuously, so recommendations move with your data":"상시 운영되어 데이터가 바뀌면 추천도 함께 바뀝니다",
+    "Video Topic Recommender & Generator":"영상 주제 추천 및 자동 생성","Finds the promotional video topics your audience is most likely to watch, then auto-generates the script, scene outline and first cut.":"시청자가 가장 볼 법한 홍보 영상 주제를 찾아내고, 대본과 장면 구성, 초안 편집본까지 자동 생성합니다.",
+    "Topic candidates scored on your channel and market data":"채널과 시장 데이터로 점수를 매긴 주제 후보","Script and storyboard generated automatically":"대본과 스토리보드 자동 생성","Ready for review in hours, not weeks":"몇 주가 아니라 몇 시간 안에 검토 가능",
+    "AI Promo Video Studio":"AI 홍보 영상 스튜디오","AI-based production of promotional videos from brief to delivery: script, voice, visuals and edit, in the formats your channels need.":"기획서부터 납품까지 AI 기반으로 홍보 영상을 제작합니다. 대본, 음성, 비주얼, 편집을 채널에 맞는 형식으로 만듭니다.",
+    "Shorts, feed and landing-page formats from one brief":"하나의 기획서로 쇼츠, 피드, 랜딩 페이지 형식까지","Brand voice and visual style kept consistent across versions":"버전이 달라도 브랜드 톤과 비주얼 스타일 유지","Fast iterations for A/B testing":"A/B 테스트를 위한 빠른 반복 제작",
+    "Usage-Based System Diagnosis":"사용량 기반 시스템 진단","Analysis and diagnosis of your existing systems based on how they are actually used, with a clear report on what to fix, keep or drop.":"기존 시스템을 실제 사용 방식 기준으로 분석하고 진단해, 무엇을 고치고 유지하고 없앨지 명확한 리포트로 드립니다.",
+    "Usage logs and user-behaviour analysis, not guesswork":"추측이 아닌 사용 로그와 사용자 행동 분석","Bottlenecks, unused features and risk hotspots mapped":"병목, 미사용 기능, 위험 지점 지도화","Prioritised improvement roadmap you can hand to your team":"팀에 바로 전달할 수 있는 우선순위별 개선 로드맵",
+    "In the field":"현장 사례","Local market and area analysis":"지역 상권·시장 분석","Before a campaign goes live we map the district: where the demand is, what prices look like, and where an ad or a store would actually be seen. The examples below are from northern Seoul.":"캠페인을 시작하기 전에 지역을 지도로 그립니다. 수요가 어디에 있는지, 시세는 어떤지, 광고나 매장이 실제로 어디서 보일지. 아래는 서울 북부 사례입니다.",
+    "Process":"프로세스","How we work":"일하는 방식","One loop, repeated. Each round makes the next recommendation better.":"하나의 루프를 반복합니다. 한 바퀴 돌 때마다 다음 추천이 더 좋아집니다.",
+    "Collect":"수집","Connect your channels, ad accounts and system logs.":"채널, 광고 계정, 시스템 로그를 연결합니다.",
+    "Analyse":"분석","Find what your audience and users actually respond to.":"시청자와 사용자가 실제로 반응하는 것을 찾습니다.",
+    "Recommend":"추천","Get ranked recommendations: ads, video topics, system fixes.":"광고, 영상 주제, 시스템 개선안을 우선순위와 함께 받습니다.",
+    "Create":"제작","AI-generated videos and campaigns, reviewed by people before launch.":"AI로 만든 영상과 캠페인을 사람이 검수한 뒤 내보냅니다.",
+    "Measure":"측정","Track results and feed them back into the next cycle.":"결과를 추적해 다음 사이클에 반영합니다.",
+    "Channels we run":"운영 중인 채널","Our own channels are the test bed for everything above: topics are picked by data, shorts are produced with AI, and the results feed the next recommendation. New shorts go out several times a day.":"자체 채널은 위의 모든 것을 시험하는 무대입니다. 주제는 데이터로 고르고, 쇼츠는 AI로 만들고, 결과는 다음 추천에 반영합니다. 새 쇼츠가 하루에도 여러 편 올라갑니다.",
+    "The hottest stories in Korean politics, as shorts. Korean-language channel.":"대한민국 정치의 뜨거운 뉴스를 쇼츠로. 한국어 채널.",
+    "News picks and commentary on Korean politics from the conservative side, as shorts. Korean-language channel.":"보수의 시각에서 고른 정치 뉴스와 논평을 쇼츠로. 한국어 채널.",
+    "Shorts · Korean politics and current affairs":"쇼츠 · 한국 정치와 시사","Watch on YouTube →":"유튜브에서 보기 →",
+    "A data and AI company for marketing":"마케팅을 위한 데이터·AI 회사",
+    "WeMakeVision believes most teams already have the data to know what works. It just sits in dashboards nobody reads. We turn that data into recommendations, content and clear next steps.":"WeMakeVision은 대부분의 팀이 이미 무엇이 통하는지 알 수 있는 데이터를 갖고 있다고 믿습니다. 다만 아무도 읽지 않는 대시보드에 갇혀 있을 뿐입니다. 우리는 그 데이터를 추천, 콘텐츠, 명확한 다음 단계로 바꿉니다.",
+    "We work with businesses that want their SNS, advertising and promotional video to be decided by evidence, and with teams that want to know how their existing systems are really being used.":"SNS, 광고, 홍보 영상을 근거로 결정하고 싶은 기업, 그리고 기존 시스템이 실제로 어떻게 쓰이는지 알고 싶은 팀과 함께합니다.",
+    "Small, senior team. You talk to the people doing the work.":"작고 경험 많은 팀. 실제로 일하는 사람과 직접 이야기합니다.","Your data stays yours. We analyse it, we do not resell it.":"데이터는 고객의 것입니다. 분석만 하고 되팔지 않습니다.","Every engagement ends with something you can run yourself.":"모든 프로젝트는 고객이 직접 운영할 수 있는 결과물로 끝납니다.",
+    "CEO & Founder":"대표 · 창업자",
+    "James Hur has spent more than ten years in consumer electronics R&D as an engineer and project manager, turning sensor data and real-world usage data into product decisions. WeMakeVision applies the same discipline to marketing: measure what people actually do, then decide.":"James Hur는 소비자 가전 R&D에서 10년 넘게 엔지니어이자 프로젝트 매니저로 일하며 센서 데이터와 실사용 데이터를 제품 결정으로 연결해 왔습니다. WeMakeVision은 같은 원칙을 마케팅에 적용합니다. 사람들이 실제로 하는 행동을 측정한 뒤 결정합니다.",
+    "Career":"경력","Education":"학력","Patents":"특허","Expertise":"전문 분야","Languages":"언어",
+    "10+ years in consumer electronics R&D. Started in embedded firmware and circuit design, then led projects on sensor, voice and vision-based interaction systems (3D ToF, stereo camera, radar, ultrasound, UWB) from concept to mass production.":"소비자 가전 R&D 10년 이상. 임베디드 펌웨어와 회로 설계로 시작해 센서, 음성, 비전 기반 인터랙션 시스템(3D ToF, 스테레오 카메라, 레이더, 초음파, UWB) 프로젝트를 콘셉트부터 양산까지 이끌었습니다.",
+    "B.S. in Electronic Engineering, Hanyang University, Seoul (2015). Thesis: driving-lane and road-surface monitoring system.":"한양대학교 전자공학 학사 (2015). 졸업 논문: 주행 차선 및 노면 모니터링 시스템.",
+    "Inventor on 30 patent filings (US and Korea) in sensing, user detection and device interaction.":"센싱, 사용자 감지, 기기 인터랙션 분야 특허 출원 30건(미국·한국)의 발명자.",
+    "Data analysis and AI (Python, PyTorch, TensorFlow), usage-data KPIs and feature evaluation, multimodal sensor systems, video production (Premiere, Audition)":"데이터 분석과 AI(Python, PyTorch, TensorFlow), 사용 데이터 기반 KPI와 기능 효과 평가, 멀티모달 센서 시스템, 영상 제작(Premiere, Audition)",
+    "Korean (native), English (professional)":"한국어(모국어), 영어(업무 가능)",
+    "Tell us what you want to get done":"무엇을 해결하고 싶은지 알려 주세요","A short email is enough. We reply with questions, not a sales deck.":"짧은 이메일이면 충분합니다. 영업 자료가 아니라 질문으로 답합니다.",
+    "Work with us":"함께 일하기","Ad recommendation setup, promotional video production, SNS and campaign operation, or a usage-based diagnosis of a system you already run.":"광고 추천 세팅, 홍보 영상 제작, SNS와 캠페인 운영, 또는 이미 운영 중인 시스템의 사용량 기반 진단.","Email James":"James에게 메일 보내기",
+    "Partnerships & press":"파트너십 · 언론","Agencies, platforms and media who want to work with our recommendation and AI video products.":"추천 시스템과 AI 영상 제품으로 함께하고 싶은 에이전시, 플랫폼, 미디어.","Get in touch":"연락하기"
+  };
+  // Elements with inline markup are translated by selector with full HTML.
+  var SPECIAL = [
+    [".hero h1", "데이터는 이미<br>답을 알고 있습니다.<br><span class=\"hl\">우리는 그 답을 보이게 합니다.</span>"],
+    [".recs li:nth-child(1) div", "숏폼 영상: \"제품 비하인드\"<small>주제 추천</small>"],
+    [".recs li:nth-child(2) div", "예산 20%를 저녁 시간대 지면으로 이동<small>광고 추천</small>"],
+    [".recs li:nth-child(3) div", "미사용 기능 발견: 내보내기 흐름<small>시스템 진단</small>"],
+    [".gallery figure:nth-child(1) figcaption", "<b>마케팅 지역분석, 도봉구</b>후보 입지와 경쟁 지점을 유동 인구, 교통 접근성, 인근 주거지 기준으로 평가했습니다."],
+    [".gallery figure:nth-child(2) figcaption", "<b>시세 분석 지도, 노원구</b>블록 단위 시세 수준과 수요 밀집 지점. 동네별 광고 예산 배분에 활용합니다."],
+    [".gallery figure:nth-child(3) figcaption", "<b>행정동 경계 오버레이</b>동 단위 경계를 광고 플랫폼 타기팅과 맞춰, 반경이 아니라 실제 경계를 따라 예산을 집행합니다."],
+    [".gallery figure:nth-child(4) figcaption", "<b>캠페인 브리핑 지도</b>교통 노선, 학교, 주거 블록을 한 장에 정리해 캠페인 킥오프에 사용합니다."],
+    [".gallery figure:nth-child(5) figcaption", "<b>구역 리포트, 노원구</b>서울 전체에서의 위치, 구 경계, 동별 구분을 한데 모아 지역 캠페인용으로 정리했습니다."],
+    ["#copy", "&copy; 2023&ndash;" + new Date().getFullYear() + " WeMakeVision. 데이터를 보이게 만듭니다."]
+  ];
+  var META = {
+    en: ["WeMakeVision | Data-driven marketing, ad recommendation and AI video", "WeMakeVision runs SNS and online marketing on data. Ad recommendation systems, data-driven video topics, AI-made promotional videos and usage-based system diagnosis."],
+    ko: ["WeMakeVision | 데이터 기반 마케팅, 광고 추천, AI 영상", "WeMakeVision은 데이터로 SNS와 온라인 마케팅을 운영합니다. 광고 추천 시스템, 데이터 기반 영상 주제, AI 홍보 영상, 사용량 기반 시스템 진단."]
+  };
+  function norm(t){ return t.replace(/\s+/g, " ").trim(); }
+  function apply(lang){
+    var ko = lang === "ko";
+    document.querySelectorAll("body *").forEach(function(el){
+      if (el.closest("script,style") || el.id === "langBtn") return;
+      var leaf = true;
+      for (var i = 0; i < el.childNodes.length; i++) { if (el.childNodes[i].nodeType !== 3) { leaf = false; break; } }
+      if (!leaf) return;
+      var key = el.dataset.key !== undefined ? el.dataset.key : norm(el.textContent);
+      if (!(key in KO)) return;
+      if (el.dataset.en === undefined) { el.dataset.en = el.innerHTML; el.dataset.key = key; }
+      el.innerHTML = ko ? KO[key] : el.dataset.en;
+    });
+    SPECIAL.forEach(function(pair){
+      var el = document.querySelector(pair[0]);
+      if (!el) return;
+      if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
+      el.innerHTML = ko ? pair[1] : el.dataset.en;
+    });
+    document.documentElement.lang = lang;
+    document.title = META[lang][0];
+    var d = document.querySelector('meta[name="description"]'); if (d) d.setAttribute("content", META[lang][1]);
+    var og = document.querySelector('meta[property="og:description"]'); if (og) og.setAttribute("content", META[lang][1]);
+    var btn = document.getElementById("langBtn");
+    btn.textContent = ko ? "English" : "한국어";
+    btn.setAttribute("lang", ko ? "en" : "ko");
+    try { localStorage.setItem("wmv-lang", lang); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("wmv-lang"); } catch (e) {}
+  var initial = saved || ((navigator.language || "").toLowerCase().indexOf("ko") === 0 ? "ko" : "en");
+  if (initial === "ko") apply("ko");
+  document.getElementById("langBtn").addEventListener("click", function(){
+    apply(document.documentElement.lang === "ko" ? "en" : "ko");
+  });
 })();
 </script>
 </body>
